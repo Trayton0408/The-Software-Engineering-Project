@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St Marys Cafeteria System</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+
+    <div id="login-screen" class="auth-modal">
+        <div class="auth-box">
+            <h2>St Marys Cafeteria Login</h2>
+            <p>Enter your account credentials to connect</p>
+            <div class="input-group">
+                <label>User ID / Student ID</label>
+                <input type="text" id="login-id" placeholder="e.g., 12345">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="login-pass" placeholder="••••••••">
+            </div>
+            <button id="login-btn" class="login-action-btn">Sign In</button>
+        </div>
+    </div>
+
+    <div id="app-content" class="hidden">
+        <header>
+            <div class="header-container">
+                <h1>St Marys Senior High School Cafeteria</h1>
+                <div class="user-profile-badge">
+                    <span id="user-display-name">Welcome</span>
+                    <button id="logout-btn" class="logout-small-btn">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="app-layout" id="student-view">
+            <div class="menu-wrapper">
+                <div class="filter-container">
+                    <input type="text" id="search-bar" placeholder="Search for food...">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-category="all">All Items</button>
+                        <button class="filter-btn" data-category="Food">Food</button>
+                        <button class="filter-btn" data-category="Drinks">Drinks</button>
+                        <button class="filter-btn" data-category="Snacks">Snacks</button>
+                    </div>
+                </div>
+                <section id="menu-section">
+                    <h2>Today's Menu</h2>
+                    <div id="menu-grid" class="grid"></div>
+                </section>
+            </div>
+
+            <aside id="cart-sidebar">
+                <h2>Your Order Summary</h2>
+                <div id="cart-items-list">
+                    <p class="empty-cart-msg">Your cart is currently empty.</p>
+                </div>
+                <div class="cart-summary-footer">
+                    <h3>Total: $<span id="cart-total">0.00</span></h3>
+                    <div class="checkout-fields" style="margin-bottom: 10px;">
+                        <label for="pickup-time" style="display:block; font-size:0.85rem; font-weight:bold; margin-bottom:4px;">Select Pickup Time:</label>
+                        <input type="time" id="pickup-time" required style="width:100%; padding: 0.5rem; border-radius:4px; border:1px solid #ccc; box-sizing:border-box;">
+                    </div>
+                    <button id="clear-cart-btn" class="clear-btn" style="margin-bottom: 8px;">Clear Order</button>
+                    <button id="checkout-btn" class="add-to-cart-btn" style="padding: 0.75rem;">Place Order</button>
+                </div>
+            </aside>
+        </main>
+
+        <main class="app-layout hidden" id="staff-view" style="grid-template-columns: 1fr; max-width: 800px; margin: 2rem auto;">
+            <section style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e0e0e0;">
+                <h2 style="color: #1b5e20; margin-top: 0;">Kitchen Fulfillment Monitor</h2>
+                <button id="refresh-orders-btn" style="background-color: #1b5e20; color: white; border: none; padding: 10px 16px; border-radius: 4px; font-weight: bold; cursor: pointer; margin-bottom: 1.5rem;">🔄 Refresh Orders</button>
+                <div id="staff-orders-container">
+                    <p style="color: #757575;">No active orders registered in the system yet.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="details-modal" class="modal hidden">
+        <div class="modal-content">
+            <span id="close-modal" class="close-btn">&times;</span>
+            <h3 id="modal-item-name">Item Name</h3>
+            <p id="modal-item-description">Description goes here.</p>
+            <div class="macro-badge-container">
+                <span class="badge">Calories: <span id="modal-cal">0</span>kcal</span>
+                <span class="badge">Protein: <span id="modal-protein">0</span>g</span>
+                <span class="badge">Carbs: <span id="modal-carbs">0</span>g</span>
+                <span class="badge">Fats: <span id="modal-fats">0</span>g</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
